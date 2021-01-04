@@ -16,6 +16,10 @@ ul {
     margin: 0;
 }
 
+.row {
+    padding-top: 3vh;
+}
+
 .bg-steel {
     background-color: #5f788a;
 }

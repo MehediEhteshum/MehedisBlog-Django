@@ -1,5 +1,5 @@
 # Important files and folders
-project_folder/settings.py // add apps/components, add 'templates' directory
+project_folder/settings.py // add apps/components, 'templates' directory, STATIC_ROOT, STATICFILES_DIRS.
 project_folder/urls.py // add view paths
 app/models.py // add models/schema
 app/admin.py // import and register the app
@@ -8,6 +8,11 @@ templates // create templates folder, add all 'html' templates and snippets here
 templates/app/form.html // create or add html form. It prevents from 'url' query. add csrf_token.
 app/forms.py // import and create django Form or better ModelForm. custom data validation can be added.
 accounts // create app for user signup, login, logout views and forms
+staticfiles // create this folder as STATICFILES_DIRS to save common static files for apps
+app/static/app // create this folder to save app specific static files
+// never serve statics from django except for debug/dev models.
+cdn_test/static // create this folder as STATIC_ROOT in dev mode
+
 
 # Starting project
 python -m venv . // creates virtual environment inside the project folder
@@ -25,5 +30,6 @@ python manage.py runserver // runs the server
 python manage.py startapp appname // creates app/component
 python manage.py makemigrations // commits db changes
 python manage.py migrate // creates db
+python manage.py collectstatic // collects statics in STATIC_ROOT
 
 python manage.py shell // to access db

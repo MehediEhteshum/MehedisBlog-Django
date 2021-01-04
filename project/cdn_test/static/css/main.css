@@ -1,7 +1,6 @@
 body {
     background: #fafafa;
     color: #333333;
-    margin-top: 5rem;
 }
 
 h1,
@@ -10,11 +9,15 @@ h3,
 h4,
 h5,
 h6 {
-    color: #444444;
+    color: black;
 }
 
 ul {
     margin: 0;
+}
+
+.row {
+    padding-top: 3vh;
 }
 
 .bg-steel {
