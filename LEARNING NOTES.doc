@@ -33,3 +33,10 @@ python manage.py migrate // creates db
 python manage.py collectstatic // collects statics in STATIC_ROOT
 
 python manage.py shell // to access db
+
+// Django user models
+from django.conf import settings // when User model is required for ForeignKey purpose
+from django.contrib.auth import get_user_model // then,
+User = get_user_model() // when User model is required for qs purpose
+user.post_set.all() // all 'post' instances associated with the 'user' instance
+user.post_set.create(**kwargs) // create a post for the user

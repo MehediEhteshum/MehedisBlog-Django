@@ -12,4 +12,5 @@ class Post(models.Model):
     date_posted = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
+        # returns query in terms of title
         return self.title
