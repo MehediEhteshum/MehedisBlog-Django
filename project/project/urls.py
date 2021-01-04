@@ -21,11 +21,15 @@ from blog.views import (
     home,
     about,
 )
+from users.views import(
+    signup,
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name="blog-home"),
     path('about/', about, name="blog-about"),
+    path('signup/', signup, name="user-signup"),
 ]
 
 if settings.DEBUG:
