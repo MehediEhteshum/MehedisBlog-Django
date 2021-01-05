@@ -38,7 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # third party
+    'crispy_forms',
+
+    # apps
     'blog',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -127,3 +132,5 @@ STATIC_ROOT = BASE_DIR/"cdn_test"/"static"
 
 if DEBUG:
     STATIC_ROOT.mkdir(parents=True, exist_ok=True)
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"
