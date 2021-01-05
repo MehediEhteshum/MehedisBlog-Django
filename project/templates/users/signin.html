@@ -2,6 +2,9 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+{% if user.is_authenticated %}
+<h2>You are already signed in</h2>
+{% else %}
 <div class="content-section">
     <form method="POST">
         {% csrf_token %}
@@ -20,4 +23,5 @@
         </span>
     </div>
 </div>
+{% endif %}
 {% endblock content %}

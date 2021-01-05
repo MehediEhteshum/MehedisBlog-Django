@@ -134,3 +134,5 @@ if DEBUG:
     STATIC_ROOT.mkdir(parents=True, exist_ok=True)
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+LOGIN_REDIRECT_URL = 'blog-home'
