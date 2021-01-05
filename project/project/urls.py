@@ -24,6 +24,7 @@ from blog.views import (
 )
 from users.views import(
     signup,
+    profile
 )
 
 urlpatterns = [
@@ -33,6 +34,7 @@ urlpatterns = [
     path('signup/', signup, name="user-signup"),
     path('signin/', LoginView.as_view(template_name="users/signin.html"), name="user-signin"),
     path('signout/', LogoutView.as_view(template_name="users/signout.html"), name="user-signout"),
+    path('my-profile/', profile, name="user-profile"),
 ]
 
 if settings.DEBUG:
