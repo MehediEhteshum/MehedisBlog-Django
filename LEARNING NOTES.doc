@@ -35,7 +35,8 @@ python manage.py collectstatic // collects statics in STATIC_ROOT
 python manage.py shell // to access db
 
 // Django user models
-from django.conf import settings // when User model is required for ForeignKey purpose
+from django.conf import settings // then,
+User = settings.AUTH_USER_MODEL // when User model is required for ForeignKey/oneToOneField purpose
 from django.contrib.auth import get_user_model // then,
 User = get_user_model() // when User model is required for qs purpose
 user.post_set.all() // all 'post' instances associated with the 'user' instance
