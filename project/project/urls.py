@@ -17,6 +17,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
+from django.contrib.auth.views import LoginView, LogoutView
 from blog.views import (
     home,
     about,
@@ -30,6 +31,8 @@ urlpatterns = [
     path('', home, name="blog-home"),
     path('about/', about, name="blog-about"),
     path('signup/', signup, name="user-signup"),
+    path('signin/', LoginView.as_view(template_name="users/signin.html"), name="user-signin"),
+    path('signout/', LogoutView.as_view(template_name="users/signout.html"), name="user-signout"),
 ]
 
 if settings.DEBUG:
