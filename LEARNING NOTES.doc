@@ -12,7 +12,9 @@ staticfiles // create this folder as STATICFILES_DIRS to save common static file
 app/static/app // create this folder to save app specific static files
 // never serve statics from django except for debug/dev models.
 cdn_test/static // create this folder as STATIC_ROOT in dev mode
-
+app/signals.py // create this file to handle signal reciever
+app/apps.py // import signals
+app/__init__.py // add default_app_config so that signals can be sent
 
 # Starting project
 python -m venv . // creates virtual environment inside the project folder
@@ -35,7 +37,8 @@ python manage.py collectstatic // collects statics in STATIC_ROOT
 python manage.py shell // to access db
 
 // Django user models
-from django.conf import settings // when User model is required for ForeignKey purpose
+from django.conf import settings // then,
+User = settings.AUTH_USER_MODEL // when User model is required for ForeignKey/oneToOneField purpose
 from django.contrib.auth import get_user_model // then,
 User = get_user_model() // when User model is required for qs purpose
 user.post_set.all() // all 'post' instances associated with the 'user' instance

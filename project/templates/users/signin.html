@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<h2>You are already signed in</h2>
+{% else %}
+<div class="content-section">
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4 pb-2">Sign In</legend>
+            {{form|crispy}}
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Sign In</button>
+        </div>
+    </form>
+
+    <div class="border-top mt-4 pt-3">
+        <span class="text-muted">
+            Need an account? <a class="ml-1" href="{% url 'user-signup' %}">Sign Up Now</a>
+        </span>
+    </div>
+</div>
+{% endif %}
+{% endblock content %}

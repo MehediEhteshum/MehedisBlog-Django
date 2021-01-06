@@ -130,7 +130,14 @@ STATICFILES_DIRS = [
 ]
 STATIC_ROOT = BASE_DIR/"cdn_test"/"static"
 
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR/"cdn_test"/"media"
+
 if DEBUG:
     STATIC_ROOT.mkdir(parents=True, exist_ok=True)
+    MEDIA_ROOT.mkdir(parents=True, exist_ok=True)
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+LOGIN_REDIRECT_URL = 'blog-home'
+LOGIN_URL = 'user-signin'
