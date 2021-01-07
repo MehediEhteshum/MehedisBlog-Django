@@ -19,7 +19,11 @@ from django.contrib import admin
 from django.urls import path
 from django.contrib.auth.views import LoginView, LogoutView
 from blog.views import (
-    home,
+    # home,
+    PostListView,
+    PostDetailView,
+    PostCreateView,
+    PostUpdateView,
     about,
 )
 from users.views import(
@@ -29,7 +33,10 @@ from users.views import(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home, name="blog-home"),
+    path('', PostListView.as_view(), name="blog-home"),
+    path('post-<int:pk>/', PostDetailView.as_view(), name="post-detail"),
+    path('new-post/', PostCreateView.as_view(), name="post-create"),
+    path('post-<int:pk>/update', PostUpdateView.as_view(), name="post-update"),
     path('about/', about, name="blog-about"),
     path('signup/', signup, name="user-signup"),
     path('signin/', LoginView.as_view(template_name="users/signin.html"), name="user-signin"),
