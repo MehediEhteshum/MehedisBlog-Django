@@ -1,7 +1,21 @@
 {% extends "base.html" %}
 
 {% block content %}
+<!-- posts -->
 {% for post in posts %}
 {% include "article_snippet.html" with post=post %}
 {% endfor %}
+<!-- posts end -->
+
+<!-- pagination -->
+{% if page_obj.has_previous %}
+<a href="?page={{page_obj.previous_page_number}}">&laquo;Previous</a>
+<a href="?page=1">First</a>
+{% endif %}
+
+{% if page_obj.has_next %}
+<a href="?page={{page_obj.paginator.num_pages}}">Last</a>
+<a href="?page={{page_obj.next_page_number}}">Next&raquo;</a>
+{% endif %}
+<!-- pagination end -->
 {% endblock content %}
