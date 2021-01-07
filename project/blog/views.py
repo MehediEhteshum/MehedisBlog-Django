@@ -65,5 +65,13 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         post = self.get_object()
         return self.request.user == post.author
 
+class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Post
+    success_url = "/"
+
+    def test_func(self):
+        post = self.get_object()
+        return self.request.user == post.author
+
 def about(request):
     return render(request, "blog/about.html")
