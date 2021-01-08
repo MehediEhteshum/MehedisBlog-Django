@@ -1,0 +1,9 @@
+{% extends "blog/home.html" %}
+
+{% block content %}
+<h3 class="mb-4">
+    Posts By {{view.kwargs.username}} <span class="text-muted" style="font-size: 0.6em;">Total
+        {{page_obj.paginator.count}} Post(s)</span>
+</h3>
+{{block.super}}
+{% endblock content %}

@@ -21,6 +21,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from blog.views import (
     # home,
     PostListView,
+    UserPostListView,
     PostDetailView,
     PostCreateView,
     PostUpdateView,
@@ -34,7 +35,8 @@ from users.views import(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', PostListView.as_view(), name="blog-home"),
+    path('', PostListView.as_view(), name="blog-home"),    
+    path('<str:username>-posts/', UserPostListView.as_view(), name="userposts-list"),
     path('post-<int:pk>/', PostDetailView.as_view(), name="post-detail"),
     path('new-post/', PostCreateView.as_view(), name="post-create"),
     path('post-<int:pk>/update', PostUpdateView.as_view(), name="post-update"),
