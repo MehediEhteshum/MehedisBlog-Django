@@ -17,7 +17,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import (
+    LoginView,
+    LogoutView,
+    PasswordResetView,
+    PasswordResetDoneView,
+    PasswordResetConfirmView,
+    PasswordResetCompleteView
+)
 from blog.views import (
     # home,
     PostListView,
@@ -35,7 +42,8 @@ from users.views import(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', PostListView.as_view(), name="blog-home"),    
+    path('', PostListView.as_view(), name="blog-home"),
+    path('user-profile/', profile, name="user-profile"),  
     path('<str:username>-posts/', UserPostListView.as_view(), name="userposts-list"),
     path('post-<int:pk>/', PostDetailView.as_view(), name="post-detail"),
     path('new-post/', PostCreateView.as_view(), name="post-create"),
@@ -45,7 +53,8 @@ urlpatterns = [
     path('signup/', signup, name="user-signup"),
     path('signin/', LoginView.as_view(template_name="users/signin.html"), name="user-signin"),
     path('signout/', LogoutView.as_view(template_name="users/signout.html"), name="user-signout"),
-    path('my-profile/', profile, name="user-profile"),
+    path('password-reset/', PasswordResetView.as_view(template_name="users/password_reset.html"), name="password-reset"),
+    path('password-reset/done/', PasswordResetDoneView.as_view(template_name="users/password_reset_done.html"), name="password-reset-done"),
 ]
 
 if settings.DEBUG:
