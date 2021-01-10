@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.utils import timezone
+from django.urls import reverse
 
 User = settings.AUTH_USER_MODEL
 
@@ -14,3 +15,6 @@ class Post(models.Model):
     def __str__(self):
         # returns query in terms of title
         return self.title
+
+    def get_absolute_url(self):
+        return reverse("post-detail", kwargs={"pk": self.pk})
