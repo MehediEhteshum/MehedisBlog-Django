@@ -34,9 +34,9 @@ class ProfileUpdateForm(forms.ModelForm):
         model = Profile
         fields = ["image"]
 
-# class ForgotPasswordForm(PasswordResetForm):
-#     def clean(self):
-#         email = self.cleaned_data.get("email")
-#         qs = User.objects.filter(email=email)
-#         if not qs.exists():
-#             raise forms.ValidationError("This email is not registered.")
+class ForgotPasswordForm(PasswordResetForm):
+    def clean(self):
+        email = self.cleaned_data.get("email")
+        qs = User.objects.filter(email=email)
+        if not qs.exists():
+            raise forms.ValidationError("This email is not registered.")
