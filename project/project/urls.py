@@ -23,7 +23,9 @@ from django.contrib.auth.views import (
     PasswordResetView,
     PasswordResetDoneView,
     PasswordResetConfirmView,
-    PasswordResetCompleteView
+    PasswordResetCompleteView,
+    PasswordChangeView,
+    PasswordChangeDoneView
 )
 from blog.views import (
     # home,
@@ -35,6 +37,7 @@ from blog.views import (
     PostDeleteView,
     about,
 )
+from users.forms import ForgotPasswordForm
 from users.views import(
     signup,
     profile
@@ -47,16 +50,18 @@ urlpatterns = [
     path('<str:username>-posts/', UserPostListView.as_view(), name="userposts-list"),
     path('post-<int:pk>/', PostDetailView.as_view(), name="post-detail"),
     path('new-post/', PostCreateView.as_view(), name="post-create"),
-    path('post-<int:pk>/update', PostUpdateView.as_view(), name="post-update"),
-    path('post-<int:pk>/delete', PostDeleteView.as_view(), name="post-delete"),
+    path('post-<int:pk>/update/', PostUpdateView.as_view(), name="post-update"),
+    path('post-<int:pk>/delete/', PostDeleteView.as_view(), name="post-delete"),
     path('about/', about, name="blog-about"),
     path('signup/', signup, name="user-signup"),
     path('signin/', LoginView.as_view(template_name="users/signin.html"), name="user-signin"),
     path('signout/', LogoutView.as_view(template_name="users/signout.html"), name="user-signout"),
-    path('password-reset/', PasswordResetView.as_view(template_name="users/password_reset.html"), name="password_reset"),
+    path('password-reset/', PasswordResetView.as_view(template_name="users/password_reset.html", form_class=ForgotPasswordForm), name="password_reset"),
     path('password-reset/done/', PasswordResetDoneView.as_view(template_name="users/password_reset_done.html"), name="password_reset_done"),
     path('password-reset/confirm/<uidb64>/<token>/', PasswordResetConfirmView.as_view(template_name="users/password_reset_confirm.html"), name="password_reset_confirm"),
-    path('password-reset/complete', PasswordResetCompleteView.as_view(template_name="users/password_reset_complete.html"), name="password_reset_complete"),
+    path('password-reset/complete/', PasswordResetCompleteView.as_view(template_name="users/password_reset_complete.html"), name="password_reset_complete"),
+    path('password-change/', PasswordChangeView.as_view(template_name="users/password_change.html"), name="password_change"),
+    path('password-change/done/', PasswordChangeDoneView.as_view(template_name="users/password_change_done.html"), name="password_change_done"),
 ]
 
 if settings.DEBUG:
