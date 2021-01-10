@@ -53,9 +53,10 @@ urlpatterns = [
     path('signup/', signup, name="user-signup"),
     path('signin/', LoginView.as_view(template_name="users/signin.html"), name="user-signin"),
     path('signout/', LogoutView.as_view(template_name="users/signout.html"), name="user-signout"),
-    path('password-reset/', PasswordResetView.as_view(template_name="users/password_reset.html"), name="password-reset"),
-    path('password-reset/done/', PasswordResetDoneView.as_view(template_name="users/password_reset_done.html"), name="password-reset-done"),
+    path('password-reset/', PasswordResetView.as_view(template_name="users/password_reset.html"), name="password_reset"),
+    path('password-reset/done/', PasswordResetDoneView.as_view(template_name="users/password_reset_done.html"), name="password_reset_done"),
     path('password-reset/confirm/<uidb64>/<token>/', PasswordResetConfirmView.as_view(template_name="users/password_reset_confirm.html"), name="password_reset_confirm"),
+    path('password-reset/complete', PasswordResetCompleteView.as_view(template_name="users/password_reset_complete.html"), name="password_reset_complete"),
 ]
 
 if settings.DEBUG:
